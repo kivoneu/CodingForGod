@@ -8,7 +8,7 @@ class PrayerUser(models.Model):
         return self.userName
 
 class Prayer(models.Model):
-    createDate = models.DateTimeField('date created')
+    createDate = models.DateTimeField(auto_now = True)
     createUser = models.ForeignKey(PrayerUser)
     prayerText = models.CharField(max_length=1024)
 
@@ -18,3 +18,4 @@ class Prayer(models.Model):
 class PrayerLog(models.Model):
     prayer = models.ForeignKey(Prayer)
     user = models.ForeignKey(PrayerUser)
+    createDate = models.DateTimeField(auto_now = True)
