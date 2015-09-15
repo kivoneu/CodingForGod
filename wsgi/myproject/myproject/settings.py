@@ -31,9 +31,7 @@ SECRET_KEY = SECRETS['secret_key']
 DEBUG = os.environ.get('DEBUG') == 'True'
 
 from socket import gethostname
-ALLOWED_HOSTS = [
-    gethostname(), # For internal OpenShift load balancer security purposes.
-    os.environ.get('OPENSHIFT_APP_DNS'), # Dynamically map to the OpenShift gear name.
+ALLOWED_HOSTS = ['*'
     #'example.com', # First DNS alias (set up in the app)
     #'www.example.com', # Second DNS alias (set up in the app)
 ]
@@ -48,7 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls'
+    'polls',
+    'HomePrayer',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,15 +87,15 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
-        'USER': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_USERNAME'),
-        'PASSWORD': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
-        'HOST': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_HOST'),
-        'PORT': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PORT'),
-#        'ENGINE': 'django.db.backends.sqlite3',
+#        'USER': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_USERNAME'),
+#        'PASSWORD': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
+#        'HOST': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_HOST'),
+#        'PORT': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
         # GETTING-STARTED: change 'db.sqlite3' to your sqlite3 database:
-#        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
     }
 }
 
