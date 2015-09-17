@@ -1,5 +1,21 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'HomePrayer/style.css' %}" />
+
+
 <form action="/HomePrayer/addPrayer/" method="post">
     {% csrf_token %}
     {{ form }}
     <input type="submit" value="Dodaj" />
 </form>
+
+{% if prayerList %}
+    <table id="t01">
+    {% for prayer in prayerList %}
+        <tr><td>{{ prayer.prayerText }}</td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>Brak intencji.</p>
+{% endif %}
+

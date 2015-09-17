@@ -1,12 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse
+from django.views import generic
 
 from .forms import AddPrayerForm
 from .models import Prayer, PrayerUser
-
-def index(request):
-    return HttpResponse("HomePrayer")
 
 
 def addPrayer(request):
@@ -21,12 +20,21 @@ def addPrayer(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            return HttpResponse(Prayer.objects.all())
+            #return HttpResponse(Prayer.objects.all())
+            return HttpResponseRedirect('/HomePrayer/addPrayer/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = AddPrayerForm()
 
-    return render(request, 'HomePrayer/addPrayer.html', {'form': form})
+    return render(request, 'HomePrayer/addPrayer.html', {'form': form, 'prayerList': Prayer.objects.all()})
+
+class IndexView(generic.ListView):
+    template_name = 'HomePrayer/index.html'
+    context_object_name = 'prayer_list'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Prayer.objects.all()
 
 

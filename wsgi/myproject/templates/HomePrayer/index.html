@@ -1,0 +1,10 @@
+{% if prayer_list %}
+    <ul>
+    {% for prayer in prayer_list %}
+        <li>{{ prayer.prayerText }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Brak intencji.</p>
+{% endif %}
+
