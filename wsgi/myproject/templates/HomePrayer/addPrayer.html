@@ -11,6 +11,9 @@
 
 {% if prayerList %}
     <table id="t01">
+    	<tr>
+    		<th>Intencja</th>
+    	</tr>
     {% for prayer in prayerList %}
         <tr><td>{{ prayer.prayerText }}</td></tr>
     {% endfor %}
