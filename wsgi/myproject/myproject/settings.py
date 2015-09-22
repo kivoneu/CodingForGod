@@ -93,14 +93,14 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'django',
-#        'USER': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_USERNAME'),
-#        'PASSWORD': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
-#        'HOST': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_HOST'),
-#        'PORT': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PORT'),
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django',
+        'USER': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_USERNAME'),
+        'PASSWORD': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
+        'HOST': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_HOST'),
+        'PORT': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PORT'),
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
     }
 }
 
