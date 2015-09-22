@@ -48,8 +48,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'polls',
     'HomePrayer',
-#    'oauth2_provider',
-#    'corsheaders',
     'social.apps.django_app.default',
 )
 
@@ -61,7 +59,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 )
 
 # GETTING-STARTED: change 'myproject' to your project name:
