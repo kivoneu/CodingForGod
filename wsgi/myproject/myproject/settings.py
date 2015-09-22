@@ -48,6 +48,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'polls',
     'HomePrayer',
+#    'oauth2_provider',
+#    'corsheaders',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,6 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 # GETTING-STARTED: change 'myproject' to your project name:
@@ -74,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -87,15 +93,14 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_USERNAME'),
-        'PASSWORD': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
-        'HOST': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_HOST'),
-        'PORT': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PORT'),
-#        'ENGINE': 'django.db.backends.sqlite3',
-        # GETTING-STARTED: change 'db.sqlite3' to your sqlite3 database:
-#        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'django',
+#        'USER': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_USERNAME'),
+#        'PASSWORD': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
+#        'HOST': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_HOST'),
+#        'PORT': os.environ.get('$OPENSHIFT_POSTGRESQL_DB_PORT'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
     }
 }
 
@@ -118,3 +123,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(WSGI_DIR, 'static')
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.open_id.OpenIdAuth',
+    'social.backends.google.GoogleOpenId',
+    'social.backends.google.GoogleOAuth2',
+    'social.backends.google.GoogleOAuth',
+    'social.backends.twitter.TwitterOAuth',
+    'social.backends.yahoo.YahooOpenId',
+    'django.contrib.auth.backends.ModelBackend',
+)
