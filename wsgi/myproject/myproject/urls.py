@@ -21,4 +21,10 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^HomePrayer/', include('HomePrayer.urls')),
     url(r'', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^login/$', 'views.home'),
+    url(r'^logout/$', 'views.logout'),
+    url(r'^done/$', 'views.done', name='done'),
+    url(r'^ajax-auth/(?P<backend>[^/]+)/$', 'views.ajax_auth',
+        name='ajax-auth'),
+    url(r'^email/$', 'views.require_email', name='require_email'),
 ]
