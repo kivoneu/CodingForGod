@@ -11,5 +11,4 @@ urlpatterns = [
     url(r'^ajax-auth/(?P<backend>[^/]+)/$', 'views.ajax_auth',
         name='ajax-auth'),
     url(r'^email/$', 'views.require_email', name='require_email'),
-    url(r'', include('social.apps.django_app.urls', namespace='social'))
 ]

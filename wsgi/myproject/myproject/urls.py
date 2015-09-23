@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^HomePrayer/', include('HomePrayer.urls')),
+    url(r'', include('social.apps.django_app.urls', namespace='social')),
 ]
