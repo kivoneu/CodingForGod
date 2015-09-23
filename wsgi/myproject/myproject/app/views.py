@@ -11,7 +11,7 @@ from social.backends.google import GooglePlusAuth
 from social.backends.utils import load_backends
 from social.apps.django_app.utils import psa
 
-from example.app.decorators import render_to
+from myproject.app.decorators import render_to
 
 
 def logout(request):
