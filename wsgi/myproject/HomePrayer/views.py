@@ -20,7 +20,7 @@ from social.backends.google import GooglePlusAuth
 from social.backends.utils import load_backends
 from social.apps.django_app.utils import psa
 
-from example.app.decorators import render_to
+from .decorators import render_to
 
 def addPrayer(request):
     # if this is a POST request we need to process the form data
