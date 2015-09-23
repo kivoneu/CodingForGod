@@ -19,6 +19,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
+    url(r'^$', 'myproject.app.views.home'),
     url(r'^polls/', include('polls.urls', namespace="polls")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^HomePrayer/', include('HomePrayer.urls')),
